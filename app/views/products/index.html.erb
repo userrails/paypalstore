@@ -1,0 +1,15 @@
+<%# title "Products" %>
+<h4>Product Lists</h4>
+<%= link_to "New Product", new_product_path %>
+
+<% for product in @products %>
+  <div class="product">
+    <h3>
+      <%= link_to h(product.name), product %>
+      <%= number_to_currency(product.price) %>
+    </h3>
+    <div class="actions">
+      <%= link_to "Add to Cart", line_items_path(:product_id => product), :method => :post %>
+    </div>
+  </div>
+<% end %>
